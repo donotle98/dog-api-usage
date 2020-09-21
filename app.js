@@ -6,10 +6,14 @@ function getDogImage(num) {
       .then(responseJson => 
         displayResults(responseJson, num))
   }
-
+function getDogImageBreed(breed, num){
+    fetch(`https://dog.ceo/api/breed/${breed}/images/random/${num}`)
+    .then(response => response.json())
+    .then(responseJson => 
+      displayResults(responseJson, num))
+}
   function displayResults(responseJson, numberDogs) {
     console.log(responseJson);
-    //replace the existing image with the new one
     for(let i = 0; i < numberDogs; i++){
         $('main').append(
             `Dog #${i + 1}<img src="${responseJson.message[i]}" class="results-here">`
@@ -22,10 +26,17 @@ function handleSubmit(){
         event.preventDefault();
         console.log('SUBMIT BUTTON PRESSED');
         let userNum = $(event.currentTarget).find('input[name="input"]').val();
-        if(userNum === ''){
-            getDogImage(3);
-        } else{
+        let userBreed = $(event.currentTarget).find('input[name="breed-input"]').val().toLowerCase();
+        console.log(userBreed);
+        if(userNum === '' && userBreed != ''){
+            getDogImageBreed(userBreed, 3);
+        } else if(userNum != '' && userBreed != ''){
+            getDogImageBreed(userBreed, userNum);
+        } else if(userNum != '' && userBreed === ''){
             getDogImage(userNum);
+        }
+        else{
+            getDogImage(3);
         }
         
     })

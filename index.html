@@ -7,12 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Look at these fuckin Dogs</h1>
+    <h1>Look at these Dogs</h1>
     <form class="submit-form">
         <label>How many dogs do you want to see?</label>
-        <input type="text" class="num-of-dogs" placeholder="ex.4 (Max is 50)" name="input"/>
+        <input type="number" class="num-of-dogs" placeholder="ex.4 (Max is 50)" name="input"/>
         <input type="submit" class="submit-button" value="Let me see them dogs" />
-        
+    </form>
+    <h3>Or/And</h3>
+    <form class="submit-form">
+        <label>Search by breed:</label>
+        <input type="text" class="breed-of-dog num-of-dogs" name="breed-input" placeholder="ex. akita"/>
+        <input type="submit" class="submit-breed submit-button" value="Let me see them dogs"/>
     </form>
     <button class="reset-button" type="button" onclick="reloadPage();">Reset page</button> 
     <section class="result-section">
