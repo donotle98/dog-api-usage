@@ -26,6 +26,9 @@ function handleSubmit(){
         event.preventDefault();
         console.log('SUBMIT BUTTON PRESSED');
         let userNum = $(event.currentTarget).find('input[name="input"]').val();
+        if(userNum < 0){
+            console.log('NUMBER MUST BE POSITIVE');
+        }
         let userBreed = $(event.currentTarget).find('input[name="breed-input"]').val().toLowerCase();
         console.log(userBreed);
         if(userNum === '' && userBreed != ''){
